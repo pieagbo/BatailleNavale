@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.Model.Plateau;
+import com.company.model.joueurs.Plateau;
 
 public class Main {
 

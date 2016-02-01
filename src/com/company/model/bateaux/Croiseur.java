@@ -1,4 +1,4 @@
-package com.company.Model;
+package com.company.model.bateaux;
 
 /**
  * Created by loua001 on 01/02/16.

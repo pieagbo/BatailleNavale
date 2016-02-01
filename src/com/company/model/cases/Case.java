@@ -1,4 +1,4 @@
-package com.company.Model;
+package com.company.model.cases;
 
 /**
  * Created by pieagbo on 01/02/16.

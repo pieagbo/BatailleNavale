@@ -1,4 +1,6 @@
-package com.company.Model;
+package com.company.model.bateaux;
+
+import com.company.model.cases.Case;
 
 /**
  * Created by loua001 on 01/02/16.

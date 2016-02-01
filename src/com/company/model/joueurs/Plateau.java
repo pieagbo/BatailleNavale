@@ -1,8 +1,7 @@
-package com.company.Model;
+package com.company.model.joueurs;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
+import com.company.model.cases.Case;
+import com.company.model.cases.CaseMer;
 
 /**
  * Created by mlafourca002 on 01/02/16.
