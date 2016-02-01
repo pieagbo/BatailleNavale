@@ -3,12 +3,12 @@ package com.company.Model;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class ContreTorpilleur extends BateauModel
-{
-    public ContreTorpilleur()
+public class PorteAvion extends BateauModel{
+
+    public PorteAvion()
     {
-        this.nom = "Contre-torpilleur";
-        this.taille = 3;
+        this.nom = "Porte Avion";
+        this.taille = 5;
     }
 
     public boolean isTouch()

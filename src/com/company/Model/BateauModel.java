@@ -7,7 +7,7 @@ public class BateauModel {
 
     public  String nom;
     public int taille;
-    //Case coordonnees;
+    Case coordonnees;
 
 
 }
