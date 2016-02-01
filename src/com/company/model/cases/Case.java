@@ -26,5 +26,9 @@ public abstract class Case {
         return this.touch ;
     }
 
+    public void setTouch(boolean touch) {
+        this.touch = touch;
+    }
+
     public abstract String toString();
 }
