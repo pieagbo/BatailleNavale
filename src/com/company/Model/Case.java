@@ -26,5 +26,5 @@ public abstract class Case {
         return this.touch ;
     }
 
-    public abstract String toStringg();
+    public abstract String toString();
 }

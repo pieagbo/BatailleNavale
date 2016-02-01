@@ -10,7 +10,7 @@ public class CaseBateau extends Case {
     }
 
     @Override
-    public String toStringg() {
-        return this.touch == true ? "X" : "0" ;
+    public String toString() {
+        return this.touch == true ? "X" : "~" ;
     }
 }

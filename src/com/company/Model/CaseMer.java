@@ -10,7 +10,7 @@ public class CaseMer extends Case{
     }
 
     @Override
-    public String toStringg() {
-        return this.touch == true ? "M" : "0" ;
+    public String toString() {
+        return this.touch == true ? "M" : "~" ;
     }
 }
