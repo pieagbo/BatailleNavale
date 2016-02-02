@@ -1,13 +1,20 @@
 package com.company.model.joueurs;
+import com.company.model.Plateau;
 import com.company.model.bateaux.*;
-import java.util.ArrayList;import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
 
     private String name ;
     private ArrayList<Bateau> listBateaux;
+    private int points ;
 
-    public Joueur() {
+    public Joueur(String name, Plateau grille) {
+        this.name = name ;
+        this.points = 0 ;
+
         /*
         System.out.print(" Entrez votre Nom : ");
 
@@ -32,6 +39,12 @@ public abstract class Joueur {
         */
 
     }
+
+    public void addPoint() {
+        this.points++;
+    }
+
     public abstract void placerBateaux();
+
     public abstract void creerJoueur();
 }

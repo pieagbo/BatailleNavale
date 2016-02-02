@@ -1,7 +1,7 @@
 package com.company.model;
 
 import com.company.model.joueurs.Joueur;
-import com.company.model.joueurs.Plateau;
+import com.company.model.joueurs.JoueurHumain;
 
 import java.util.Observable;
 
@@ -18,10 +18,19 @@ public class BatailleNavaleModel extends Observable {
     public BatailleNavaleModel(String nameJ1, String nameJ2){
         this.grilleJ1 = new Plateau();
         this.grilleJ2 = new Plateau();
-        this.player1 = new Joueur(nameJ1, grilleJ1);
-        this.player2 = new Joueur(nameJ2, grilleJ2);
+        this.player1 = new JoueurHumain(nameJ1, grilleJ1);
+        this.player2 = new JoueurHumain(nameJ2, grilleJ2);
     }
 
+    public void addPoint(Joueur player) {
+        player.addPoint();
+    }
 
+    public Plateau[] getGrilles(){
+        Plateau[] grilles = new Plateau[2] ;
+        grilles[0] = grilleJ1 ;
+        grilles[1] = grilleJ2 ;
 
+        return  grilles ;
+    }
 }

@@ -1,4 +1,4 @@
-package com.company.model.joueurs;
+package com.company.model;
 
 import com.company.model.cases.Case;
 import com.company.model.cases.CaseMer;
@@ -28,5 +28,9 @@ public class Plateau {
             }
 
         }
+    }
+
+    public Case getCase(int x, int y) {
+        return this.plateau[x][y] ;
     }
 }
