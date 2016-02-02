@@ -16,16 +16,11 @@ public class JoueurHumain extends Joueur {
 
     @Override
     public void placerBateaux(Plateau grille) {
-
-        for(Bateau b : this.mesBateaux) {
-            System.out.print(" Entrez les coordonées de votre bateau : " + b.getNom() + " de taille " + b.getTaille());
-
+        for(Bateau boat : this.bateaux) {
+            System.out.println("Entrez les coordonées de votre " + boat.getNom() + " :") ;
             Scanner scan = new Scanner(System.in);
-            positionnerUnBateau(b, grille, scan.nextLine());
-
-
+            positionnerUnBateau(boat, grille, scan.nextLine());
         }
-
     }
 
     @Override

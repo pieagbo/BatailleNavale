@@ -5,51 +5,42 @@ import main.java.com.company.model.bateaux.*;
 import main.java.com.company.model.cases.CaseBateau;
 
 import java.util.ArrayList;import java.util.Scanner;
+
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
 
     protected String name ;
-    protected ArrayList<Bateau> mesBateaux;
+    protected ArrayList<Bateau> bateaux;
     protected int points ;
 
     public Joueur( Plateau grille) {
         this.points = 0 ;
     
-        System.out.print(" Entrez votre Nom : ");
-
+        System.out.print("Entrez votre nom : ");
         Scanner scan = new Scanner(System.in);
         this.name = scan.nextLine();
+        System.out.println();
 
-        Croiseur unCroiseur = new Croiseur();
-        PorteAvion unPorteAvion = new PorteAvion();
-        Torpilleur unTorpilleur = new Torpilleur();
-        SousMarin unSousMarin = new SousMarin();
-        ContreTorpilleur unContreTorpilleur = new ContreTorpilleur();
+        System.out.println("Avant de commencer, veuillez placer vos bateaux sur la carte.");
+        System.out.println("NB : Pour placer un bateau de la case (0,1) à la case (0,5)");
+        System.out.println("sur l'axe des abscisses, entrez 01;05");
 
-        System.out.print(" Bon jeu " + name);
+        System.out.println();
 
-        this.mesBateaux = new ArrayList<>();
-
-        this.mesBateaux.add(unCroiseur);
-        this.mesBateaux.add(unPorteAvion);
-        this.mesBateaux.add(unTorpilleur);
-        this.mesBateaux.add(unSousMarin);
-        this.mesBateaux.add(unContreTorpilleur);
+        this.bateaux = new ArrayList<>();
+        this.bateaux.add(new Croiseur());
+        this.bateaux.add(new PorteAvion());
+        this.bateaux.add(new Torpilleur());
+        this.bateaux.add(new SousMarin());
+        this.bateaux.add(new ContreTorpilleur());
 
         placerBateaux(grille);
-
     }
-    public abstract void placerBateaux( Plateau grille);
 
+    public  void positionnerUnBateau(Bateau bateau, Plateau plateau, String coordonnees){
+        int x, y, x1, y1;
 
-
-    public  void positionnerUnBateau(Bateau unBateau, Plateau unPlateau, String coord ){
-
-
-        int x,y,x1,y1;
-
-
-        String[] parts = coord.split(";");
+        String[] parts = coordonnees.split(";");
 
         String parts1 = parts[0];
         String parts2 = parts[1];
@@ -60,34 +51,34 @@ public abstract class Joueur {
         x1 = Integer.parseInt(parts2.substring(0,1));
         y1 = Integer.parseInt(parts2.substring(1));
 
-        System.out.println(x+""+y+""+x1+""+y1);
-
         CaseBateau CaseD = new CaseBateau(x,y);
-        unPlateau.setCase(x,y,CaseD);
-        unBateau.getCoordonnes().add(CaseD);
+        plateau.setCase(x, y, CaseD);
+        bateau.getCoordonnes().add(CaseD);
         CaseBateau CaseArr = new CaseBateau(x1,y1);
-        unPlateau.setCase(x1,y1,CaseArr);
-        unBateau.getCoordonnes().add(CaseArr);
-        if (x==x1) {
+        plateau.setCase(x1, y1, CaseArr);
+        bateau.getCoordonnes().add(CaseArr);
+        if (x == x1) {
             while (y <= y1) {
                 int z = y++;
                 CaseBateau CaseMillieu = new CaseBateau(x, z);
-                unPlateau.setCase(x,z,CaseMillieu);
-                unBateau.getCoordonnes().add(CaseMillieu);
+                plateau.setCase(x, z, CaseMillieu);
+                bateau.getCoordonnes().add(CaseMillieu);
             }
-        }else if (y==y1) {
+        } else if (y == y1) {
             while (x <= x1) {
                 int z = x++;
                 CaseBateau CaseMillieu = new CaseBateau(z,y);
-                unPlateau.setCase(z,y,CaseMillieu);
-                unBateau.getCoordonnes().add(CaseMillieu);
+                plateau.setCase(z, y, CaseMillieu);
+                bateau.getCoordonnes().add(CaseMillieu);
             }
         }
     }
 
+    public void addPoint() {
+        this.points++;
+    }
+
+    public abstract void placerBateaux( Plateau grille);
 
     public abstract void creerJoueur();
-
-    public void addPoint() {this.points++;
-    }
 }
