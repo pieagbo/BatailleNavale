@@ -1,7 +1,8 @@
-package com.company.model.joueurs;
-import com.company.model.Plateau;
-import com.company.model.bateaux.*;
-import com.company.model.cases.CaseBateau;
+package main.java.com.company.model.joueurs;
+
+import main.java.com.company.model.Plateau;
+import main.java.com.company.model.bateaux.*;
+import main.java.com.company.model.cases.CaseBateau;
 
 import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/

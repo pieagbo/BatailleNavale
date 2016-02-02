@@ -1,10 +1,11 @@
-package com.company.tests;
+package main.java.com.company.tests;
 
-import com.company.model.cases.CaseBateau;
-import com.company.model.cases.CaseMer;
+import main.java.com.company.model.cases.CaseBateau;
+import main.java.com.company.model.cases.CaseMer;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * Created by pieagbo on 01/02/16.
@@ -15,7 +16,7 @@ public class CaseTest {
 
     @Test
     public void CaseBateauToStringTest() throws Exception {
-        assertEquals(caseBateau.toString(),"~");
+        assertEquals(caseBateau.toString(),"B");
     }
 
     @Test

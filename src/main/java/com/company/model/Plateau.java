@@ -1,7 +1,7 @@
-package com.company.model;
+package main.java.com.company.model;
 
-import com.company.model.cases.Case;
-import com.company.model.cases.CaseMer;
+import main.java.com.company.model.cases.Case;
+import main.java.com.company.model.cases.CaseMer;
 
 /**
  * Created by mlafourca002 on 01/02/16.

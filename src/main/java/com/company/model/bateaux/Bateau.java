@@ -1,6 +1,6 @@
-package com.company.model.bateaux;
+package main.java.com.company.model.bateaux;
 
-import com.company.model.cases.Case;
+import main.java.com.company.model.cases.Case;
 
 import java.util.ArrayList;
 
