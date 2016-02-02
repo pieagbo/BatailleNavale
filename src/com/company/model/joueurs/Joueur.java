@@ -2,14 +2,13 @@ package com.company.model.joueurs;
 import com.company.model.bateaux.*;
 import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
-public class Joueur {
+public abstract class Joueur {
 
-    private String name ;
-    private ArrayList<Bateau> mesBateaux;
-     public String coord ;
+    protected String nom ;
+    protected ArrayList<Bateau> listBateaux;
 
     public Joueur() {
-
+        /*
         System.out.print(" Entrez votre Nom : ");
 
         Scanner scan = new Scanner(System.in);
@@ -30,20 +29,16 @@ public class Joueur {
         this.mesBateaux.add(unTorpilleur);
         this.mesBateaux.add(unSousMarin);
         this.mesBateaux.add(unContreTorpilleur);
+        */
 
     }
-    public void placerBateaux(){
-
+    public abstract void placerBateaux();
+    public abstract void creerJoueur();
+        /*
         System.out.print(" Entrez les coordonées de votre premier bateau : "+ this.mesBateaux.get(0).nom);
         Scanner scan = new Scanner(System.in);
         this.coord = scan.nextLine();
         //this.mesBateaux.get(0).coordonnes.set();
+        */
 
-
-    }
-
-
-    public void convertCoordonnées(){
-        //this.coord;
-    }
 }
