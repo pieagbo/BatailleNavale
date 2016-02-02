@@ -5,7 +5,7 @@ import com.company.model.cases.Case;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class Bateau {
+public abstract class Bateau {
     protected String nom;
     protected int taille;
     protected Case[] coordonnes;
@@ -16,9 +16,14 @@ public class Bateau {
         this.coordonnes = new Case[taille] ;
     }
 
-    public boolean isTouch()
+    public boolean isDestroy()
     {
-        return false;
+        int i =  0 ;
+        while(i < coordonnes.length) {
+            if (coordonnes[i].isTouch() == false)
+                return false;
+        }
+        return true;
     }
 
 }

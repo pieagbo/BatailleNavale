@@ -8,7 +8,6 @@ import com.company.model.cases.CaseMer;
  */
 public class Plateau {
 
-
     private Case[][] plateau ;
 
     public Plateau (){
