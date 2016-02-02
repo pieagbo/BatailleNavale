@@ -28,6 +28,14 @@ public class Plateau {
         }
     }
 
+    public Case getCase(int x, int y ){
+        return this.plateau[x][y];
+    }
+
+    public void setCase(int x, int y ,Case uneCase){
+        this.plateau[x][y]=uneCase;
+    }
+
 
 
 }

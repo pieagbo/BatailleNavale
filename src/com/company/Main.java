@@ -13,5 +13,7 @@ public class Main {
 
 
         Joueur j1 = new Joueur();
+
+        j1.placerBateaux();
     }
 }
