@@ -1,6 +1,7 @@
-package com.company.model.joueurs;
-import com.company.model.bateaux.*;
-import java.util.ArrayList;import java.util.Scanner;
+package com.company.model.joueur;
+import com.company.model.bateau.*;
+import java.util.ArrayList;
+
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
 
