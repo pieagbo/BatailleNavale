@@ -17,6 +17,7 @@ public class Bateau {
         this.taille = taille ;
         this.coordonnes = new ArrayList<>(taille) ;
     }
+
     public int getTaille() {
         return taille;
     }
@@ -40,9 +41,23 @@ public class Bateau {
     public void setCoordonnes(ArrayList<Case> coordonnes) {
         this.coordonnes = coordonnes;
     }
+
     public boolean isTouch()
     {
         return false;
+    }
+
+    public boolean isDetroy() {
+        int i = 0 ;
+
+        while (i < this.coordonnes.size()) {
+            if (!this.coordonnes.get(i).isTouch()) {
+                return false ;
+            }
+            i++ ;
+        }
+
+        return true;
     }
 
 }
