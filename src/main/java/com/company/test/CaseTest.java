@@ -1,4 +1,4 @@
-package main.java.com.company.tests;
+package main.java.com.company.test;
 
 import main.java.com.company.model.cases.CaseBateau;
 import main.java.com.company.model.cases.CaseMer;
