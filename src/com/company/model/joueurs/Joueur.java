@@ -1,6 +1,6 @@
 package com.company.model.joueurs;
 
-import com.company.model.bateaux.BateauModel;
+import com.company.model.bateaux.Bateau;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Joueur {
 
     private String name ;
-    private ArrayList<BateauModel> mesBateaux;
+    private ArrayList<Bateau> mesBateaux;
 
     public Joueur(){
 

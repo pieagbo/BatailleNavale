@@ -3,16 +3,12 @@ package com.company.model.bateaux;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class ContreTorpilleur extends BateauModel
+public class ContreTorpilleur extends Bateau
 {
+
     public ContreTorpilleur()
     {
-        this.nom = "Contre-torpilleur";
-        this.taille = 3;
+        super("Contre-torpilleur", 3);
     }
 
-    public boolean isTouch()
-    {
-        return false;
-    }
 }

@@ -3,16 +3,12 @@ package com.company.model.bateaux;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class Croiseur extends BateauModel
+public class Croiseur extends Bateau
 {
+
     public Croiseur()
     {
-        this.nom = "Croiseur";
-        this.taille = 4;
+        super("Croiseur", 4) ;
     }
 
-    public boolean isTouch()
-    {
-        return false;
-    }
 }

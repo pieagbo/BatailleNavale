@@ -3,16 +3,10 @@ package com.company.model.bateaux;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class Torpilleur extends BateauModel
+public class Torpilleur extends Bateau
 {
     public Torpilleur()
     {
-        this.nom = "Torpilleur";
-        this.taille = 2;
-    }
-
-    public boolean isTouch()
-    {
-        return false;
+        super("Torpilleur", 2) ;
     }
 }
