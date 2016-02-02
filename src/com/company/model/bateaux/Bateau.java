@@ -6,9 +6,9 @@ import com.company.model.cases.Case;
  * Created by loua001 on 01/02/16.
  */
 public class Bateau {
-    protected String nom;
+    public String nom;
     protected int taille;
-    protected Case[] coordonnes;
+    public Case[] coordonnes;
 
     public Bateau(String nom, int taille) {
         this.nom = nom ;
