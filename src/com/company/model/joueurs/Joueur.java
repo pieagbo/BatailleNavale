@@ -1,20 +1,19 @@
 package com.company.model.joueurs;
+import com.company.model.Plateau;
 import com.company.model.bateaux.*;
-import com.company.model.cases.Case;
 import com.company.model.cases.CaseBateau;
-
 
 import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
-public class Joueur {
+public abstract class Joueur {
 
-    private String name ;
-    private ArrayList<Bateau> mesBateaux;
+    protected String name ;
+    protected ArrayList<Bateau> mesBateaux;
+    protected int points ;
 
-
-private int i;
-    public Joueur() {
-
+    public Joueur( Plateau grille) {
+        this.points = 0 ;
+    
         System.out.print(" Entrez votre Nom : ");
 
         Scanner scan = new Scanner(System.in);
@@ -36,21 +35,11 @@ private int i;
         this.mesBateaux.add(unSousMarin);
         this.mesBateaux.add(unContreTorpilleur);
 
-    }
-    public void placerBateaux(){
-        //TODO : with foreach
-
-        for(i = 0 ;i<= mesBateaux.size();i++) {
-            System.out.print(" Entrez les coordonées de votre bateau : " + this.mesBateaux.get(i).getNom() + " de taille " + this.mesBateaux.get(i).getTaille());
-
-            Scanner scan = new Scanner(System.in);
-            positionnerUnBateau(this.mesBateaux.get(i),);scan.nextLine();
-
-
-        }
-
+        placerBateaux(grille);
 
     }
+    public abstract void placerBateaux( Plateau grille);
+
 
 
     public  void positionnerUnBateau(Bateau unBateau, Plateau unPlateau, String coord ){
@@ -69,6 +58,8 @@ private int i;
 
         x1 = Integer.parseInt(parts2.substring(0,1));
         y1 = Integer.parseInt(parts2.substring(1));
+
+        System.out.println(x+""+y+""+x1+""+y1);
 
         CaseBateau CaseD = new CaseBateau(x,y);
         unPlateau.setCase(x,y,CaseD);
@@ -91,15 +82,11 @@ private int i;
                 unBateau.getCoordonnes().add(CaseMillieu);
             }
         }
-
-
-
-
-
-
-
-
-        }
-
-
     }
+
+
+    public abstract void creerJoueur();
+
+    public void addPoint() {this.points++;
+    }
+}
