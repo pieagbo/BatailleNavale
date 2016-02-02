@@ -4,8 +4,8 @@ import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
 
-    protected String nom ;
-    protected ArrayList<Bateau> listBateaux;
+    private String name ;
+    private ArrayList<Bateau> listBateaux;
 
     public Joueur() {
         /*
@@ -34,11 +34,4 @@ public abstract class Joueur {
     }
     public abstract void placerBateaux();
     public abstract void creerJoueur();
-        /*
-        System.out.print(" Entrez les coordonées de votre premier bateau : "+ this.mesBateaux.get(0).nom);
-        Scanner scan = new Scanner(System.in);
-        this.coord = scan.nextLine();
-        //this.mesBateaux.get(0).coordonnes.set();
-        */
-
 }
