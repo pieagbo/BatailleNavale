@@ -43,7 +43,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>.Main</mainClass>
+                            <mainClass>main.java.com.company.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
