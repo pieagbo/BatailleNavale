@@ -1,8 +1,10 @@
 package com.company.model.joueurs;
+
 import com.company.model.Plateau;
 import com.company.model.bateaux.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
