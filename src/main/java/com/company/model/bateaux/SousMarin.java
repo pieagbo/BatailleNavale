@@ -5,10 +5,8 @@ package main.java.com.company.model.bateaux;
  */
 public class SousMarin extends Bateau
 {
-    
     public SousMarin()
     {
         super("Sous-marin", 3) ;
     }
-
 }

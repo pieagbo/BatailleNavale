@@ -29,10 +29,10 @@ public abstract class Joueur {
 
         this.bateaux = new ArrayList<>();
         this.bateaux.add(new Croiseur());
-        this.bateaux.add(new PorteAvion());
-        this.bateaux.add(new Torpilleur());
-        this.bateaux.add(new SousMarin());
-        this.bateaux.add(new ContreTorpilleur());
+        //this.bateaux.add(new PorteAvion());
+        //this.bateaux.add(new Torpilleur());
+        //this.bateaux.add(new SousMarin());
+        //this.bateaux.add(new ContreTorpilleur());
 
         placerBateaux(grille);
     }

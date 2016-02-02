@@ -17,8 +17,9 @@ public class BatailleNavaleModel extends Observable {
 
     public BatailleNavaleModel(){
         this.grilleJ1 = new Plateau();
-        //this.grilleJ2 = new Plateau();
         this.player1 = new JoueurHumain(grilleJ1);
+
+        //this.grilleJ2 = new Plateau();
         //this.player2 = new JoueurHumain( grilleJ2);
     }
 
@@ -32,5 +33,10 @@ public class BatailleNavaleModel extends Observable {
         //grilles[1] = grilleJ2 ;
 
         return  grilles ;
+    }
+
+    public Joueur getWinner() {
+
+        return null ; 
     }
 }
