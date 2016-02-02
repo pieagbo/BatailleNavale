@@ -9,9 +9,8 @@ public class Main {
 	// write your code here
 
         Plateau plateau = new Plateau();
-        plateau.creerPlateau();
+        plateau.afficherPlateau();
 
-
-        Joueur j1 = new Joueur();
+        //Joueur j1 = new Joueur();
     }
 }
