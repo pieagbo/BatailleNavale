@@ -1,7 +1,7 @@
-package main.java.com.company.model.joueurs;
+package com.company.model.joueurs;
 
-import main.java.com.company.model.Plateau;
-import main.java.com.company.model.bateaux.Bateau;
+import com.company.model.Plateau;
+import com.company.model.bateaux.Bateau;
 
 import java.util.Scanner;
 

@@ -1,8 +1,8 @@
-package main.java.com.company;
+package com.company;
 
-import main.java.com.company.controller.BatailleNavaleController;
-import main.java.com.company.model.BatailleNavaleModel;
-import main.java.com.company.view.BatailleNavaleView;
+import com.company.controller.BatailleNavaleController;
+import com.company.model.BatailleNavaleModel;
+import com.company.view.BatailleNavaleView;
 
 public class Main {
 

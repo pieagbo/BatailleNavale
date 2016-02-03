@@ -1,4 +1,4 @@
-package main.java.com.company.model.cases;
+package com.company.model.cases;
 
 /**
  * Created by pieagbo on 01/02/16.

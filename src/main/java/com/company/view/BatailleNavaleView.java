@@ -1,9 +1,9 @@
-package main.java.com.company.view;
+package com.company.view;
 
-import main.java.com.company.controller.BatailleNavaleController;
-import main.java.com.company.model.BatailleNavaleModel;
-import main.java.com.company.model.Plateau;
-import main.java.com.company.model.joueurs.Joueur;
+import com.company.controller.BatailleNavaleController;
+import com.company.model.BatailleNavaleModel;
+import com.company.model.Plateau;
+import com.company.model.joueurs.Joueur;
 
 import java.util.Observable;
 import java.util.Observer;

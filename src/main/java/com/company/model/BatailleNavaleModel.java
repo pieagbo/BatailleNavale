@@ -1,7 +1,7 @@
-package main.java.com.company.model;
+package com.company.model;
 
-import main.java.com.company.model.joueurs.Joueur;
-import main.java.com.company.model.joueurs.JoueurHumain;
+import com.company.model.joueurs.Joueur;
+import com.company.model.joueurs.JoueurHumain;
 
 import java.util.Observable;
 import java.util.Random;

@@ -1,7 +1,7 @@
-package test.java.com.company;
+package com.company;
 
-import main.java.com.company.model.cases.CaseBateau;
-import main.java.com.company.model.cases.CaseMer;
+import com.company.model.cases.CaseBateau;
+import com.company.model.cases.CaseMer;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

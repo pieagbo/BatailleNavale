@@ -1,10 +1,10 @@
 package com.company.controller;
 
-import main.java.com.company.model.BatailleNavaleModel;
-import main.java.com.company.model.Plateau;
-import main.java.com.company.model.cases.Case;
-import main.java.com.company.model.cases.CaseBateau;
-import main.java.com.company.model.joueurs.Joueur;
+import com.company.model.BatailleNavaleModel;
+import com.company.model.Plateau;
+import com.company.model.cases.Case;
+import com.company.model.cases.CaseBateau;
+import com.company.model.joueurs.Joueur;
 
 /**
  * Created by pieagbo on 01/02/16.
