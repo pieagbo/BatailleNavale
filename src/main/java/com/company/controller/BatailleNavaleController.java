@@ -1,4 +1,4 @@
-package main.java.com.company.controller;
+package com.company.controller;
 
 import main.java.com.company.model.BatailleNavaleModel;
 import main.java.com.company.model.Plateau;

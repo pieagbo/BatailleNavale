@@ -1,4 +1,4 @@
-package main.java.com.company.test;
+package test.java.com.company;
 
 import org.junit.Test;
 
