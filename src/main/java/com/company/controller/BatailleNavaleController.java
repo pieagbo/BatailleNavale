@@ -17,15 +17,9 @@ public class BatailleNavaleController {
         this.model = model ;
     }
 
-    public void attack(Joueur player, Plateau grille, int x, int y) {
-        Case c = grille.getCase(x,y) ;
-
-        if (c != null)
-            c.setTouch(true);
-
-        if(c instanceof CaseBateau){
-            model.addPoint(player) ;
-        }
+    public void attack(Plateau grille, int x, int y) {
+        Case uneCase = grille.getCase(x, y);
+        uneCase.setTouch(true);
     }
 
 }

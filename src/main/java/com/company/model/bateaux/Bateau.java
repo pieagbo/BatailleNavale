@@ -48,15 +48,11 @@ public class Bateau {
     }
 
     public boolean isDetroy() {
-        int i = 0 ;
-
-        while (i < this.coordonnes.size()) {
-            if (!this.coordonnes.get(i).isTouch()) {
+        for (Case c : this.coordonnes){
+            if(!c.isTouch()){
                 return false ;
             }
-            i++ ;
         }
-
         return true;
     }
 

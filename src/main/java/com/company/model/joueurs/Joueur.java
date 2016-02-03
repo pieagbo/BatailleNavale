@@ -9,6 +9,10 @@ import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
 public abstract class Joueur {
 
+    public String getName() {
+        return name;
+    }
+
     protected String name ;
     protected ArrayList<Bateau> bateaux;
     protected int points ;
@@ -28,9 +32,9 @@ public abstract class Joueur {
         System.out.println();
 
         this.bateaux = new ArrayList<>();
-        this.bateaux.add(new Croiseur());
+        this.bateaux.add(new Torpilleur());
+        //this.bateaux.add(new Croiseur());
         //this.bateaux.add(new PorteAvion());
-        //this.bateaux.add(new Torpilleur());
         //this.bateaux.add(new SousMarin());
         //this.bateaux.add(new ContreTorpilleur());
 
@@ -38,7 +42,7 @@ public abstract class Joueur {
     }
 
     public  void positionnerUnBateau(Bateau bateau, Plateau plateau, String coordonnees){
-        int x, y, x1, y1;
+        int x, y, x1, y1, aa ;
 
         String[] parts = coordonnees.split(";");
 
@@ -53,25 +57,36 @@ public abstract class Joueur {
 
         CaseBateau CaseD = new CaseBateau(x,y);
         plateau.setCase(x, y, CaseD);
+
         bateau.getCoordonnes().add(CaseD);
         CaseBateau CaseArr = new CaseBateau(x1,y1);
+
         plateau.setCase(x1, y1, CaseArr);
         bateau.getCoordonnes().add(CaseArr);
         if (x == x1) {
-            while (y <= y1) {
-                int z = y++;
-                CaseBateau CaseMillieu = new CaseBateau(x, z);
-                plateau.setCase(x, z, CaseMillieu);
+            while (y < (y1 - 1) ) {
+                y++;
+                CaseBateau CaseMillieu = new CaseBateau(x, y);
+                plateau.setCase(x, y, CaseMillieu);
                 bateau.getCoordonnes().add(CaseMillieu);
             }
         } else if (y == y1) {
-            while (x <= x1) {
-                int z = x++;
-                CaseBateau CaseMillieu = new CaseBateau(z,y);
-                plateau.setCase(z, y, CaseMillieu);
+            while (x < (x1 - 1) ) {
+                x++;
+                CaseBateau CaseMillieu = new CaseBateau(x,y);
+                plateau.setCase(x, y, CaseMillieu);
                 bateau.getCoordonnes().add(CaseMillieu);
             }
         }
+    }
+
+    public boolean hasLoose(){
+        for (Bateau b : this.bateaux){
+            if (!b.isDetroy()){
+              return false;
+            }
+        }
+        return true;
     }
 
     public void addPoint() {

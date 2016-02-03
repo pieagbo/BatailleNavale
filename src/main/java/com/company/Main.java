@@ -11,7 +11,7 @@ public class Main {
         BatailleNavaleController controller = new BatailleNavaleController(model) ;
         BatailleNavaleView view = new BatailleNavaleView(model, controller) ;
 
-        view.drawGame();
+        view.jouer();
 
     }
 }

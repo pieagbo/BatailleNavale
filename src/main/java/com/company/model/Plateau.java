@@ -21,10 +21,10 @@ public class Plateau {
     }
 
     public void afficherPlateau() {
-        for(int i=0;i<plateau.length;i++) {
+        for (Case[] aPlateau : plateau) {
             System.out.println();
-            for(int j=0;j<plateau.length;j++) {
-                System.out.print(this.plateau[i][j].toString());
+            for (int j = 0; j < plateau.length; j++) {
+                System.out.print(aPlateau[j].toString());
             }
 
         }
