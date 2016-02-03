@@ -1,4 +1,4 @@
-package com.company;
+package com.company.model;
 
 import com.company.model.cases.CaseBateau;
 import com.company.model.cases.CaseMer;

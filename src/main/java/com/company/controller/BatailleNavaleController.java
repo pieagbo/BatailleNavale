@@ -11,7 +11,7 @@ import com.company.model.joueurs.Joueur;
  */
 public class BatailleNavaleController {
 
-    private BatailleNavaleModel model ;
+    BatailleNavaleModel model ;
 
     public BatailleNavaleController(BatailleNavaleModel model) {
         this.model = model ;
