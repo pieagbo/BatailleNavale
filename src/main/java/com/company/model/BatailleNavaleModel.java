@@ -1,6 +1,5 @@
 package com.company.model;
 
-import com.company.model.bateaux.Bateau;
 import com.company.model.cases.CaseBateau;
 import com.company.model.joueurs.Joueur;
 
@@ -8,10 +7,10 @@ import com.company.model.joueurs.Joueur;
  * Created by pieagbo on 01/02/16.
  */
 public class BatailleNavaleModel {
-    private Joueur player1 ;
-    private Joueur player2 ;
-    private Plateau grilleJ1 ;
-    private Plateau grilleJ2 ;
+    Joueur player1 ;
+    Joueur player2 ;
+    Plateau grilleJ1 ;
+    Plateau grilleJ2 ;
 
     public BatailleNavaleModel(){
         this.grilleJ1 = new Plateau();
@@ -68,9 +67,5 @@ public class BatailleNavaleModel {
 
     public Joueur getPlayer2() {
         return player2;
-    }
-
-    public void setPlayerName(Joueur player, String name) {
-        player.setName(name);
     }
 }

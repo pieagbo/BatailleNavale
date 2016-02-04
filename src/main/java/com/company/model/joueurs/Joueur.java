@@ -10,12 +10,8 @@ import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
 public class Joueur {
 
-    public String getName() {
-        return name;
-    }
-
-     String name ;
-     ArrayList<Bateau> bateaux;
+    protected String name ;
+    protected ArrayList<Bateau> bateaux;
 
     public Joueur() {
         this.name = "" ;
@@ -70,7 +66,7 @@ public class Joueur {
     public boolean hasLoose(){
         for (Bateau b : this.bateaux){
             if (!b.isDetroy()){
-              return false;
+                return false;
             }
         }
         return true;
@@ -94,5 +90,9 @@ public class Joueur {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

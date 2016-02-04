@@ -8,7 +8,8 @@ import static org.junit.Assert.assertNull;
 public class BatailleNavaleModelTest {
 
     @Test
-    public void canCreateBatailleNavaleModel() throws Exception {
+    public void testName() throws Exception {
+
 
     }
 }

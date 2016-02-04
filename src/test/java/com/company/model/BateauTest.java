@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * Created by pieagbo on 02/02/16.
  */
 public class BateauTest {
-    
+
     @Test
     public void testIsDestroy() throws Exception {
         Bateau bateau= new Croiseur();
