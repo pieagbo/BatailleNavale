@@ -10,7 +10,7 @@ public class CaseMer extends Case{
     }
 
     @Override
-    public String toString() {
-        return this.touch == true ? "M" : "~" ;
+    public String toString(boolean boatVisible) {
+        return this.touch ? " M " : " ~ " ;
     }
 }

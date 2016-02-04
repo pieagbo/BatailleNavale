@@ -14,14 +14,6 @@ public abstract class Case {
         this.touch = false ;
     }
 
-    public int getX(){
-        return this.X ;
-    }
-
-    public int getY(){
-        return this.Y ;
-    }
-
     public boolean isTouch(){
         return this.touch ;
     }
@@ -30,5 +22,5 @@ public abstract class Case {
         this.touch = touch;
     }
 
-    public abstract String toString();
+    public abstract String toString(boolean boatVisible);
 }

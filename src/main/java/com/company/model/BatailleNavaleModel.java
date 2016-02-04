@@ -24,10 +24,6 @@ public class BatailleNavaleModel {
         this.player2 = new JoueurHumain( grilleJ2);
     }
 
-    public void addPoint(Joueur player) {
-        player.addPoint();
-    }
-
     public Plateau[] getGrilles(){
         Plateau[] grilles = new Plateau[2] ;
         grilles[0] = grilleJ1 ;

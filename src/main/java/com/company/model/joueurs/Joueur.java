@@ -15,25 +15,23 @@ public abstract class Joueur {
 
     protected String name ;
     protected ArrayList<Bateau> bateaux;
-    protected int points ;
 
-    public Joueur( Plateau grille) {
-        this.points = 0 ;
-    
+    public Joueur(Plateau grille) {
+
+        System.out.println("Bienvenue a vous et que la bataille commence");
         System.out.print("Entrez votre nom : ");
         Scanner scan = new Scanner(System.in);
         this.name = scan.nextLine();
         System.out.println();
 
         System.out.println("Avant de commencer, veuillez placer vos bateaux sur la carte.");
-        System.out.println("NB : Pour placer un bateau de la case (0,1) à la case (0,5)");
+        System.out.println("Ex : Pour placer un bateau de taille 5 de la case (0,0) à la case (0,4)");
         System.out.println("sur l'axe des abscisses, entrez 01;05");
-
         System.out.println();
 
         this.bateaux = new ArrayList<>();
         this.bateaux.add(new Torpilleur());
-        //this.bateaux.add(new Croiseur());
+        this.bateaux.add(new Croiseur());
         //this.bateaux.add(new PorteAvion());
         //this.bateaux.add(new SousMarin());
         //this.bateaux.add(new ContreTorpilleur());
@@ -87,10 +85,6 @@ public abstract class Joueur {
             }
         }
         return true;
-    }
-
-    public void addPoint() {
-        this.points++;
     }
 
     public abstract void placerBateaux( Plateau grille);

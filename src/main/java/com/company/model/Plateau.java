@@ -20,12 +20,16 @@ public class Plateau {
         }
     }
 
-    public void afficherPlateau() {
-        for (Case[] aPlateau : plateau) {
-            System.out.println();
-            for (int j = 0; j < plateau.length; j++) {
-                System.out.print(aPlateau[j].toString());
+    public void afficherPlateau(boolean boatVisible) {
+        for (int i = 0; i < plateau.length ; i++) {
+            if (i == 0)
+                System.out.println("   0  1  2  3  4  5  6  7  8  9");
+
+            System.out.print(i + " ");
+            for (int j = 0; j < plateau.length ; j++) {
+                System.out.print(this.plateau[i][j].toString(boatVisible)) ;
             }
+            System.out.println();
 
         }
     }

@@ -11,15 +11,19 @@ import java.util.Scanner;
 public class JoueurHumain extends Joueur {
 
     public JoueurHumain(Plateau grille) {
-        super( grille);
+        super(grille);
     }
 
     @Override
     public void placerBateaux(Plateau grille) {
         for(Bateau boat : this.bateaux) {
-            System.out.println("Entrez les coordonées de votre " + boat.getNom() + " :") ;
+            grille.afficherPlateau(true);
+            System.out.println("Votre " + boat.getNom() + " à une taille de " + boat.getTaille() + " cases.") ;
+            System.out.println("Entrez les coordonées souhaitées pour le placer sur votre carte : ") ;
+
             Scanner scan = new Scanner(System.in);
             positionnerUnBateau(boat, grille, scan.nextLine());
+            System.out.println();
         }
     }
 

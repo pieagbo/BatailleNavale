@@ -10,7 +10,11 @@ public class CaseBateau extends Case {
     }
 
     @Override
-    public String toString() {
-        return this.touch == true ? "X" : "B" ;
+    public String toString(boolean boatVisible) {
+        if (boatVisible) {
+            return this.touch ? " X " : " B " ;
+        } else {
+            return this.touch ? " X " : " ~ " ;
+        }
     }
 }
