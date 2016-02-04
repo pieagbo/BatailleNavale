@@ -14,11 +14,14 @@ import java.awt.event.ActionListener;
  */
 public class DialogView extends JDialog{
 
-    BatailleNavaleModel model ;
-    BatailleNavaleController controller ;
+    private BatailleNavaleModel model = new BatailleNavaleModel();
+    private BatailleNavaleController controller = new BatailleNavaleController(model);
 
-    private JLabel nomJoueur;
-    private JTextField nom;
+
+    private BatailleNavaleView dial = new BatailleNavaleView(model, controller);
+
+    private JLabel nomJoueurUn, nomJoueurDeux;
+    private JTextField textNomUn, textNomDeux, coord1;
     private JFrame frame;
 
 
@@ -32,17 +35,31 @@ public class DialogView extends JDialog{
         this.frame = new JFrame("Bataille Navale");
 
 
-        this.frame.setSize(1200, 1000);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setResizable(true);
-        //this.frame.setLocationRelativeTo(null);
+//        this.frame.setSize(1200, 1000);
+//        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.frame.setResizable(true);
+//        //this.frame.setLocationRelativeTo(null);
+//        this.initComponent();
+//
+//
+//        this.frame.setVisible(true);
+//        this.frame.pack();
+
+
+        this.setSize(550, 270);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        this.setVisible(true);
         this.initComponent();
 
+    }
 
-        this.frame.setVisible(true);
-        this.frame.pack();
+    public BatailleNavaleView showBatailView(){
 
+        this.setVisible(true);
 
+        return this.dial;
 
     }
 
@@ -50,13 +67,23 @@ public class DialogView extends JDialog{
         //Le nom
         JPanel panNom = new JPanel();
         panNom.setBackground(Color.white);
-        panNom.setPreferredSize(new Dimension(220, 60));
-        nom = new JTextField();
-        nom.setPreferredSize(new Dimension(100, 25));
-        panNom.setBorder(BorderFactory.createTitledBorder("Nom du personnage"));
-        nomJoueur = new JLabel("Saisir un nom :");
-        panNom.add(nomJoueur);
-        panNom.add(nom);
+        panNom.setPreferredSize(new Dimension(450, 100));
+
+
+        textNomUn = new JTextField();
+        textNomUn.setPreferredSize(new Dimension(100, 25));
+
+        textNomDeux = new JTextField();
+        textNomDeux.setPreferredSize(new Dimension(100, 25));
+
+        panNom.setBorder(BorderFactory.createTitledBorder("Paramétrage joueur 1"));
+
+        nomJoueurUn = new JLabel("Nom joueur :");
+        panNom.add(nomJoueurUn);
+        panNom.add(textNomUn);
+
+        nomJoueurDeux = new JLabel("Entrez les coordonnées de vos navires !!!");
+        panNom.add(nomJoueurDeux);
 
         JPanel content = new JPanel();
         content.setBackground(Color.white);
@@ -68,6 +95,7 @@ public class DialogView extends JDialog{
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 setVisible(false);
             }
         });

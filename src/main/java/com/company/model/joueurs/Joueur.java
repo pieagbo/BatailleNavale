@@ -19,7 +19,7 @@ public abstract class Joueur {
 
     public Joueur( Plateau grille) {
         this.points = 0 ;
-    
+    /*
         System.out.print("Entrez votre nom : ");
         Scanner scan = new Scanner(System.in);
         this.name = scan.nextLine();
@@ -30,7 +30,7 @@ public abstract class Joueur {
         System.out.println("sur l'axe des abscisses, entrez 01;05");
 
         System.out.println();
-
+*/
         this.bateaux = new ArrayList<>();
         this.bateaux.add(new Torpilleur());
         //this.bateaux.add(new Croiseur());
