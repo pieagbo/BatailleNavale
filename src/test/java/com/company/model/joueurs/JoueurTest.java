@@ -5,7 +5,6 @@ import com.company.model.bateaux.Bateau;
 import com.company.model.bateaux.Croiseur;
 import com.company.model.cases.Case;
 import com.company.model.cases.CaseBateau;
-import com.company.model.joueurs.Joueur;
 import org.junit.Assert;
 import org.junit.Test;
 

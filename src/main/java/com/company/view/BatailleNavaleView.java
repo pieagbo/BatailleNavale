@@ -4,12 +4,10 @@ import com.company.controller.BatailleNavaleController;
 import com.company.model.BatailleNavaleModel;
 import com.company.model.Plateau;
 import com.company.model.bateaux.Bateau;
-import com.company.model.bateaux.SousMarin;
 import com.company.model.joueurs.Joueur;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 /**
  * Created by pieagbo on 01/02/16.
@@ -186,6 +184,4 @@ public class BatailleNavaleView {
 
         return coordonnees ;
     }
-
-
 }

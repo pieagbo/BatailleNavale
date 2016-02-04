@@ -5,10 +5,8 @@ package com.company.model.bateaux;
  */
 public class Croiseur extends Bateau
 {
-
     public Croiseur()
     {
         super("Croiseur", 4) ;
     }
-
 }

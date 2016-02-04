@@ -1,7 +1,5 @@
-package com.company.model;
+package com.company.model.cases;
 
-import com.company.model.cases.CaseBateau;
-import com.company.model.cases.CaseMer;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

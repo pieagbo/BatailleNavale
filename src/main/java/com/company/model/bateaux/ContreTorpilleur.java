@@ -5,10 +5,8 @@ package com.company.model.bateaux;
  */
 public class ContreTorpilleur extends Bateau
 {
-
     public ContreTorpilleur()
     {
         super("Contre-torpilleur", 3);
     }
-
 }

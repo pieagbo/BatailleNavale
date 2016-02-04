@@ -1,6 +1,5 @@
 package com.company.model.bateaux;
 
-import com.company.model.bateaux.Torpilleur;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
