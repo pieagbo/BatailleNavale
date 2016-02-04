@@ -1,4 +1,4 @@
-package com.company.model;
+package com.company.model.cases;
 
 import com.company.model.cases.CaseBateau;
 import com.company.model.cases.CaseMer;
@@ -15,14 +15,19 @@ public class CaseTest {
     CaseMer caseMer = new CaseMer(1,0);
 
     @Test
-    public void CaseBateauToStringTest() throws Exception {
-        assertEquals(caseBateau.toString(),"B");
+    public void CaseBateauVisibleToStringTest() throws Exception {
+        assertEquals(caseBateau.toString(true)," B ");
+    }
+
+    @Test
+    public void CaseBateauInvisibleToStringTest() throws Exception {
+        assertEquals(caseBateau.toString(false)," ~ ");
     }
 
     @Test
     public void CaseMerToStringTest() throws Exception {
         caseMer.setTouch(true);
-        assertEquals(caseMer.toString(), "M");
+        assertEquals(caseMer.toString(true), " M ");
     }
 
 }

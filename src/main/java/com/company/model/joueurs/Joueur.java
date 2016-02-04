@@ -10,10 +10,6 @@ import java.util.ArrayList;import java.util.Scanner;
 /*** Created by mlafourca002 on 01/02/16.*/
 public class Joueur {
 
-    public String getName() {
-        return name;
-    }
-
     protected String name ;
     protected ArrayList<Bateau> bateaux;
 
@@ -94,5 +90,9 @@ public class Joueur {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }

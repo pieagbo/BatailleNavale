@@ -8,7 +8,7 @@ import com.company.model.cases.CaseMer;
  */
 public class Plateau {
 
-    private Case[][] plateau ;
+    Case[][] plateau ;
 
     public Plateau (){
         this.plateau = new Case[10][10];

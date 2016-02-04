@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by loua001 on 01/02/16.
  */
-public class Bateau {
+public abstract  class Bateau {
     String nom;
     int taille;
     ArrayList<Case> coordonnes;
