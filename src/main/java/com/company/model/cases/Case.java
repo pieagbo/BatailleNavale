@@ -23,4 +23,12 @@ public abstract class Case {
     }
 
     public abstract String toString(boolean boatVisible);
+
+    public int getX() {
+        return this.X ;
+    }
+
+    public int getY() {
+        return this.Y;
+    }
 }

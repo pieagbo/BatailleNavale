@@ -2,12 +2,13 @@ package com.company.model.joueurs;
 
 import com.company.model.Plateau;
 import com.company.model.bateaux.*;
+import com.company.model.cases.Case;
 import com.company.model.cases.CaseBateau;
 
 import java.util.ArrayList;import java.util.Scanner;
 
 /*** Created by mlafourca002 on 01/02/16.*/
-public abstract class Joueur {
+public class Joueur {
 
     public String getName() {
         return name;
@@ -16,31 +17,19 @@ public abstract class Joueur {
     protected String name ;
     protected ArrayList<Bateau> bateaux;
 
-    public Joueur(Plateau grille) {
-
-        System.out.println("Bienvenue a vous et que la bataille commence");
-        System.out.print("Entrez votre nom : ");
-        Scanner scan = new Scanner(System.in);
-        this.name = scan.nextLine();
-        System.out.println();
-
-        System.out.println("Avant de commencer, veuillez placer vos bateaux sur la carte.");
-        System.out.println("Ex : Pour placer un bateau de taille 5 de la case (0,0) à la case (0,4)");
-        System.out.println("sur l'axe des abscisses, entrez 01;05");
-        System.out.println();
-
+    public Joueur() {
+        this.name = "" ;
         this.bateaux = new ArrayList<>();
         this.bateaux.add(new Torpilleur());
-        this.bateaux.add(new Croiseur());
-        //this.bateaux.add(new PorteAvion());
-        //this.bateaux.add(new SousMarin());
-        //this.bateaux.add(new ContreTorpilleur());
+//        this.bateaux.add(new Croiseur());
+//        this.bateaux.add(new PorteAvion());
+//        this.bateaux.add(new SousMarin());
+//        this.bateaux.add(new ContreTorpilleur());
 
-        placerBateaux(grille);
     }
 
     public  void positionnerUnBateau(Bateau bateau, Plateau plateau, String coordonnees){
-        int x, y, x1, y1, aa ;
+        int x, y, x1, y1 ;
 
         String[] parts = coordonnees.split(";");
 
@@ -87,7 +76,23 @@ public abstract class Joueur {
         return true;
     }
 
-    public abstract void placerBateaux( Plateau grille);
 
-    public abstract void creerJoueur();
+    public Bateau getBateau(Case uneCase) {
+        for (Bateau b : this.bateaux) {
+            for (Case c : b.getCoordonnes()){
+                if (c.getX() == uneCase.getX() && c.getY() == uneCase.getY()) {
+                    return b ;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Bateau> getBateaux() {
+        return bateaux;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
