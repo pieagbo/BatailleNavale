@@ -1,9 +1,12 @@
 package com.company.model.cases;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * Created by pieagbo on 01/02/16.
  */
-public abstract class Case {
+public abstract class Case extends JPanel{
     protected int X ;
     protected int Y ;
     protected boolean touch ;
@@ -12,6 +15,7 @@ public abstract class Case {
         this.X = x;
         this.Y = y;
         this.touch = false ;
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
     }
 
     public boolean isTouch(){

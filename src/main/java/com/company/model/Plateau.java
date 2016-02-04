@@ -31,6 +31,10 @@ public class Plateau {
         }
     }
 
+    public Case[][] getPlateau() {
+        return plateau;
+    }
+
     public Case getCase(int x, int y ){
         return this.plateau[x][y];
     }
