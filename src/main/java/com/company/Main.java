@@ -10,11 +10,11 @@ public class Main {
     public static void main(String[] args) {
         BatailleNavaleModel model = new BatailleNavaleModel() ;
         BatailleNavaleController controller = new BatailleNavaleController(model) ;
-        /*BatailleNavaleView view = new BatailleNavaleView(model, controller) ;
-*/
+        BatailleNavaleView view = new BatailleNavaleView(model, controller) ;
+
         //view.jouer();
 
-        DialogView dial = new DialogView(model, controller);
+        //DialogView dial = new DialogView(model, controller);
 
     }
 }
