@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         BatailleNavaleModel model = new BatailleNavaleModel() ;
-        BatailleNavaleController controller = new BatailleNavaleController(model) ;
+        BatailleNavaleController controller = new BatailleNavaleController() ;
         BatailleNavaleView view = new BatailleNavaleView(model, controller) ;
 
         //view.jouer();

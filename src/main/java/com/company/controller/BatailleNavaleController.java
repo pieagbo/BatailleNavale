@@ -11,12 +11,6 @@ import com.company.model.joueurs.Joueur;
  */
 public class BatailleNavaleController {
 
-    BatailleNavaleModel model ;
-
-    public BatailleNavaleController(BatailleNavaleModel model) {
-        this.model = model ;
-    }
-
     public void attack(Plateau grille, int x, int y) {
         Case uneCase = grille.getCase(x, y);
         uneCase.setTouch(true);
