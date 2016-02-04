@@ -14,8 +14,8 @@ public class Joueur {
         return name;
     }
 
-    protected String name ;
-    protected ArrayList<Bateau> bateaux;
+     String name ;
+     ArrayList<Bateau> bateaux;
 
     public Joueur() {
         this.name = "" ;

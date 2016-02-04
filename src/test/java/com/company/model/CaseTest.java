@@ -11,18 +11,30 @@ import static org.junit.Assert.assertEquals;
  * Created by pieagbo on 01/02/16.
  */
 public class CaseTest {
-    CaseBateau caseBateau = new CaseBateau(0,0);
-    CaseMer caseMer = new CaseMer(1,0);
+
+    private final boolean visible = true;
 
     @Test
-    public void CaseBateauToStringTest() throws Exception {
-        assertEquals(caseBateau.toString(),"B");
+    public void caseBateauToStringTest() throws Exception {
+        CaseBateau caseBateau = new CaseBateau(0,0);
+
+        assertEquals(" B ", caseBateau.toString(visible));
     }
 
     @Test
-    public void CaseMerToStringTest() throws Exception {
+    public void caseMerTouchToStringTest() throws Exception {
+        CaseMer caseMer = new CaseMer(1,0);
+
         caseMer.setTouch(true);
-        assertEquals(caseMer.toString(), "M");
+        assertEquals(" M ", caseMer.toString(visible));
+    }
+
+
+    @Test
+    public void caseMerToStringTest() throws Exception {
+        CaseMer caseMer = new CaseMer(1,0);
+
+        assertEquals(" ~ ", caseMer.toString(visible));
     }
 
 }
