@@ -4,10 +4,12 @@ import com.company.controller.BatailleNavaleController;
 import com.company.model.BatailleNavaleModel;
 import com.company.model.Plateau;
 import com.company.model.bateaux.Bateau;
+import com.company.model.bateaux.SousMarin;
 import com.company.model.joueurs.Joueur;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 /**
  * Created by pieagbo on 01/02/16.
@@ -31,10 +33,10 @@ public class BatailleNavaleView {
         this.player2 = this.model.getPlayer2() ;
 
         this.setJoueurName(player1);
-        this.setJoueurBoats(player1, this.model.getPlateau(player1));
+        this.setJoueurBoats(player1, this.model.getPlateau(player2));
 
         this.setJoueurName(player2);
-        this.setJoueurBoats(player2, this.model.getPlateau(player2));
+        this.setJoueurBoats(player2, this.model.getPlateau(player1));
 
         this.currentPlayer = this.getRandomPlayer() ;
         this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
@@ -43,15 +45,17 @@ public class BatailleNavaleView {
     public void drawGame() {
         System.out.println(this.currentPlayer.getName() + " c'est à votre tour de jouer.");
         this.currentPlateau.afficherPlateau(false);
+        System.out.println();
     }
 
     public void jouer(){
-        while(model.getWinner() == null){
+        Joueur winner = null ;
+        while(winner == null){
             drawGame();
 
-            String position = askWhereShoot() ;
-            int x =  Integer.parseInt(position.substring(0, 1)) ;
-            int y =  Integer.parseInt(position.substring(1, 2)) ;
+            int[] position = askWhereShoot() ;
+            int x =  position[0] ;
+            int y =  position[1] ;
 
             this.controller.shoot(this.currentPlayer, x, y);
 
@@ -60,16 +64,18 @@ public class BatailleNavaleView {
             this.displayBoatDestroy(this.currentPlayer, x, y);
 
             swapJoueur() ;
+
+            winner = this.model.getWinner() ;
         }
 
-        displayWinner(this.model.getWinner());
+        displayWinner(winner);
     }
 
-    private String askWhereShoot() {
-        System.out.println("Entrez les coordonnées de la case à cibler (ex: 02) : ");
+    private int[] askWhereShoot() {
+        System.out.println("Entrez les coordonnées de la case à cibler (ex: C2) : ");
         Scanner scan = new Scanner(System.in);
 
-        return scan.nextLine();
+        return getCoordonnees(scan.nextLine()) ;
     }
 
     private Joueur getRandomPlayer() {
@@ -110,6 +116,7 @@ public class BatailleNavaleView {
             default:
                 System.out.println("Erreur");
         }
+        System.out.println();
     }
 
     private void setJoueurName(Joueur player){
@@ -118,28 +125,67 @@ public class BatailleNavaleView {
         Scanner scan = new Scanner(System.in);
         String name = scan.nextLine();
 
+        System.out.println();
         player.setName(name);
     }
 
     private void setJoueurBoats(Joueur player, Plateau grille){
         System.out.println("Avant de commencer, veuillez placer vos bateaux sur la carte.");
-        System.out.println("Ex : Pour placer un bateau de taille 5 de la case (0,0) à la case (0,4)");
-        System.out.println("sur l'axe des abscisses, entrez 01;05");
         System.out.println();
 
-        grille.afficherPlateau(true);
+        grille.afficherPlateau(false);
 
         for(Bateau boat : player.getBateaux()){
+            Scanner scan = new Scanner(System.in);
 
             System.out.println("Votre " + boat.getNom() + " à une taille de " + boat.getTaille() + " cases.") ;
-            System.out.println("Entrez les coordonées souhaitées pour le placer sur votre carte : ") ;
-
-            Scanner scan = new Scanner(System.in);
+            System.out.println("Entrez la case où placer le bateau : ") ;
             String position = scan.nextLine() ;
 
-            player.positionnerUnBateau(boat, grille, position);
+            System.out.println("Dans quelle position souhaitez-vous placer le bateau ?") ;
+            System.out.println("horizontale (h) ou verticale (v)") ;
+            String sens = scan.nextLine() ;
+
+            String pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
+            System.out.println(pos);
+            player.positionnerUnBateau(boat, grille, pos);
+
+            grille.afficherPlateau(true);
 
             System.out.println();
         }
     }
+
+    private int[] getCoordonnees(String input){
+        int[] coordonnees = new int[2] ;
+
+        coordonnees[0] = getIndexInAlphabet(input.substring(0,1).charAt(0)) ;
+        coordonnees[1] = getNumber(input.substring(1)) ;
+
+        return coordonnees;
+    }
+
+    private int getIndexInAlphabet(char letter) {
+        return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(Character.toUpperCase(letter)) ;
+    }
+
+    private int getNumber(String letter) {
+        return Integer.parseInt(letter) - 1 ;
+    }
+
+    private String convertToCustomString(int[] pos, String sens, int taille) {
+        String coordonnees = Integer.toString(pos[0]) + Integer.toString(pos[1]) + ";" ;
+
+        if("v".equalsIgnoreCase(sens)){
+            int x = pos[0] + (taille -1) ;
+            coordonnees += Integer.toString(x) + Integer.toString(pos[1]) ;
+        } else if("h".equalsIgnoreCase(sens)) {
+            int y = pos[1] + (taille -1) ;
+            coordonnees += Integer.toString(pos[0]) + Integer.toString(y) ;
+        }
+
+        return coordonnees ;
+    }
+
+
 }

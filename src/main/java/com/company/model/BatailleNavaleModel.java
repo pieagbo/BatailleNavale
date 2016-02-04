@@ -36,7 +36,7 @@ public class BatailleNavaleModel {
                 return "NO" ;
             }
         } else {
-            if (this.grilleJ2.getCase(x,y) instanceof CaseBateau) {
+            if (this.grilleJ1.getCase(x,y) instanceof CaseBateau) {
                 return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ? "DESTROY" : "TOUCH" ;
             } else {
                 return "NO" ;
