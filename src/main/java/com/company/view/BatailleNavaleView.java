@@ -23,7 +23,12 @@ public class BatailleNavaleView {
     Joueur currentPlayer ;
     Plateau currentPlateau ;
 
+
+
     public BatailleNavaleView(BatailleNavaleModel model, BatailleNavaleController controller) {
+
+
+
         this.model = model ;
         this.controller = controller ;
 
@@ -40,9 +45,11 @@ public class BatailleNavaleView {
         this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
     }
 
+
+
     public void drawGame() {
         System.out.println(this.currentPlayer.getName() + " c'est à votre tour de jouer.");
-        this.currentPlateau.afficherPlateau(false);
+        this.currentPlateau.afficherPlateau(BatailleNavaleModel._mode);
         System.out.println();
     }
 
@@ -117,11 +124,15 @@ public class BatailleNavaleView {
         System.out.println();
     }
 
-     void setJoueurName(Joueur player){
-        System.out.print("Entrez votre nom : ");
 
-        Scanner scan = new Scanner(System.in);
-        String name = scan.nextLine();
+     void setJoueurName(Joueur player){
+
+         Scanner scan = new Scanner(System.in);
+
+
+         System.out.print("Entrez votre nom : ");
+         String name = scan.nextLine();
+
 
         System.out.println();
         player.setName(name);
@@ -191,4 +202,6 @@ public class BatailleNavaleView {
 
         return coordonnees ;
     }
+
+
 }

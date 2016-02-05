@@ -1,9 +1,12 @@
 package com.company.model.joueurs;
 
+import com.company.controller.BatailleNavaleController;
+import com.company.model.BatailleNavaleModel;
 import com.company.model.Plateau;
 import com.company.model.bateaux.*;
 import com.company.model.cases.Case;
 import com.company.model.cases.CaseBateau;
+import com.company.view.BatailleNavaleView;
 
 import java.util.ArrayList;import java.util.Scanner;
 
@@ -13,14 +16,29 @@ public class Joueur {
     protected String name ;
     protected ArrayList<Bateau> bateaux;
 
+
+
     public Joueur() {
         this.name = "" ;
         this.bateaux = new ArrayList<>();
-        this.bateaux.add(new Torpilleur());
-        this.bateaux.add(new Croiseur());
-        this.bateaux.add(new PorteAvion());
-        this.bateaux.add(new SousMarin());
-        this.bateaux.add(new ContreTorpilleur());
+
+        if(BatailleNavaleModel._mode) // Mode --> Développeur
+        {
+            System.out.println(BatailleNavaleModel._mode);
+            this.bateaux.add(new Torpilleur());
+        }
+        else
+        {
+
+            this.bateaux.add(new Torpilleur());
+            this.bateaux.add(new Croiseur());
+            this.bateaux.add(new PorteAvion());
+            this.bateaux.add(new SousMarin());
+            this.bateaux.add(new ContreTorpilleur());
+        }
+
+
+
 
     }
 
@@ -79,6 +97,7 @@ public class Joueur {
         }
         return null;
     }
+
 
     public ArrayList<Bateau> getBateaux() {
         return bateaux;
