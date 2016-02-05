@@ -58,11 +58,11 @@ public class GrilleGraphique extends JPanel {
                 g2.setStroke(oldStroke);
                 if (this.grille.getPlateau()[i][j].getBoat() != null) {
                     if(this.grille.getPlateau()[i][j].getBoat().isDetroy()){
-                        g2.setColor(Color.DARK_GRAY);
+                        g2.setColor(Color.BLACK);
                     } else {
                         if(this.grille.getPlateau()[i][j].getBoat().isTouch()) {
                             if (this.grille.getPlateau()[i][j].isTouch()) {
-                                g2.setColor(Color.GRAY);
+                                g2.setColor(Color.RED);
                             } else {
                                 g2.setColor(Color.BLUE);
                             }
@@ -72,7 +72,7 @@ public class GrilleGraphique extends JPanel {
                     }
                 } else {
                     if(this.grille.getPlateau()[i][j].isTouch()) {
-                        g2.setColor(Color.red);
+                        g2.setColor(Color.CYAN);
                     } else {
                         g2.setColor(Color.BLUE);
                     }

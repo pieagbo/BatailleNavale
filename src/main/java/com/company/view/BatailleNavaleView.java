@@ -115,10 +115,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
         this.swapp.setEnabled(false);
     }
 
-    private void restartSetThisActionPerformed(ActionEvent evt) {
-        this.model = new BatailleNavaleModel() ;
-    }
-
     private void setJoueurName(Joueur player){
         System.out.print("Entrez votre nom : ");
 

@@ -18,7 +18,7 @@ public class PlayerBoard extends JPanel {
         super() ;
         this.player = player;
 
-        this.playerName = new JLabel(player.getName(), JLabel.CENTER) ;
+        this.playerName = new JLabel("A votre tour : " + player.getName(), JLabel.CENTER) ;
         this.nbBoats = new JLabel("Bateaux restants : " + player.getBateauxInLife(), JLabel.CENTER) ;
 
         JPanel panel1 = new JPanel() ;
@@ -43,7 +43,7 @@ public class PlayerBoard extends JPanel {
 
     public void setPlayer(Joueur player){
         this.player = player ;
-        this.playerName.setText(player.getName());
+        this.playerName.setText("A votre tour : " + player.getName());
         this.nbBoats.setText("Bateaux restants : " + player.getBateauxInLife());
     }
 
