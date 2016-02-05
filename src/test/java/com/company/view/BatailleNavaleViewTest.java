@@ -34,7 +34,12 @@ public class BatailleNavaleViewTest {
     }
 
     private BatailleNavaleView createBatailleNavaleViewWithoutScanner() {
-        BatailleNavaleModel model = new BatailleNavaleModel();
+        BatailleNavaleModel model = new BatailleNavaleModel()
+        {
+            @Override
+            public void entrerMode() {
+            }
+        };
         BatailleNavaleController controller = new BatailleNavaleController(model);
         return new BatailleNavaleView(model, controller) {
             @Override
