@@ -4,11 +4,9 @@ import com.company.controller.BatailleNavaleController;
 import com.company.model.BatailleNavaleModel;
 import com.company.model.Plateau;
 import com.company.model.joueurs.Joueur;
-import com.sun.xml.internal.ws.api.server.AbstractServerAsyncTransport;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class BatailleNavaleViewTest {
@@ -28,6 +26,10 @@ public class BatailleNavaleViewTest {
 
     @Test
     public void testConvertToCustomString() throws Exception{
+        BatailleNavaleView b = createBatailleNavaleViewWithoutScanner();
+        int[] rc = new int[3];
+        int[] res = b.convertToCustomString(rc,"v",3);
+        Assert.assertEquals(res[0],rc[0]);
 
     }
 

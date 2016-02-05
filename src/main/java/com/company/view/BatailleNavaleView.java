@@ -69,7 +69,7 @@ public class BatailleNavaleView {
         displayWinner(winner);
     }
 
-    private int[] askWhereShoot() {
+     int[] askWhereShoot() {
         System.out.println("Entrez les coordonnées de la case à cibler (ex: C2) : ");
         Scanner scan = new Scanner(System.in);
 
@@ -117,7 +117,7 @@ public class BatailleNavaleView {
         System.out.println();
     }
 
-    private void setJoueurName(Joueur player){
+     void setJoueurName(Joueur player){
         System.out.print("Entrez votre nom : ");
 
         Scanner scan = new Scanner(System.in);
@@ -127,7 +127,7 @@ public class BatailleNavaleView {
         player.setName(name);
     }
 
-    private void setJoueurBoats(Joueur player, Plateau grille){
+     void setJoueurBoats(Joueur player, Plateau grille){
         System.out.println("Avant de commencer, veuillez placer vos bateaux sur la carte.");
         System.out.println();
 
@@ -163,7 +163,7 @@ public class BatailleNavaleView {
         return coordonnees;
     }
 
-    private int getIndexInAlphabet(char letter) {
+     int getIndexInAlphabet(char letter) {
         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(Character.toUpperCase(letter)) ;
     }
 
@@ -171,7 +171,7 @@ public class BatailleNavaleView {
         return Integer.parseInt(letter) - 1 ;
     }
 
-    private int[] convertToCustomString(int[] pos, String sens, int taille) {
+     int[] convertToCustomString(int[] pos, String sens, int taille) {
         int[] coordonnees = new int[4] ;
         coordonnees[0] = pos[0] ;
         coordonnees[1] = pos[1] ;
