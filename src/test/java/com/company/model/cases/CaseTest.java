@@ -1,5 +1,7 @@
 package com.company.model.cases;
 
+import com.company.model.bateaux.Bateau;
+import com.company.model.bateaux.Torpilleur;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,26 +15,22 @@ public class CaseTest {
     private final boolean visible = true;
 
     @Test
-    public void caseBateauToStringTest() throws Exception {
-//        CaseBateau caseBateau = new CaseBateau(0,0);
-//
-//        assertEquals(" B ", caseBateau.toString(visible));
+    public void caseHasBoatToString() throws Exception {
+        Case c = new Case(0,1) ;
+
+        Bateau b = new Torpilleur() ;
+
+        c.addBoat(b);
+
+        assertEquals(" B ", c.display(visible));
     }
 
     @Test
-    public void caseMerTouchToStringTest() throws Exception {
-//        CaseMer caseMer = new CaseMer(1,0);
-//
-//        caseMer.setTouch(true);
-//        assertEquals(" M ", caseMer.toString(visible));
+    public void caseIsTouchToString() throws Exception {
+        Case c = new Case(0,1) ;
+
+        c.setTouch(true);
+
+        assertEquals(" X ", c.display(visible));
     }
-
-
-    @Test
-    public void caseMerToStringTest() throws Exception {
-//        CaseMer caseMer = new CaseMer(1,0);
-//
-//        assertEquals(" ~ ", caseMer.toString(visible));
-    }
-
 }

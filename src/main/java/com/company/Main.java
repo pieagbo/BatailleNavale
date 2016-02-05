@@ -12,7 +12,5 @@ public class Main {
         BatailleNavaleView view = new BatailleNavaleView(model, controller) ;
 
         view.setVisible(true);
-
-        //view.jouer();
     }
 }

@@ -62,19 +62,19 @@ public class GrilleGraphique extends JPanel {
                     } else {
                         if(this.grille.getPlateau()[i][j].getBoat().isTouch()) {
                             if (this.grille.getPlateau()[i][j].isTouch()) {
-                                g2.setColor(Color.green);
+                                g2.setColor(Color.GRAY);
                             } else {
-                                g2.setColor(Color.gray);
+                                g2.setColor(Color.BLUE);
                             }
                         } else {
-                            g2.setColor(Color.gray);
+                            g2.setColor(Color.BLUE);
                         }
                     }
                 } else {
                     if(this.grille.getPlateau()[i][j].isTouch()) {
                         g2.setColor(Color.red);
                     } else {
-                        g2.setColor(Color.cyan);
+                        g2.setColor(Color.BLUE);
                     }
                 }
 
@@ -94,12 +94,10 @@ public class GrilleGraphique extends JPanel {
 
 
     public int getCaseX(int pixel) {
-        int x = (pixel - POSITION_Y_GRILLE ) / ( ( ( POSITION_Y_GRILLE + ( TAILLE_CASE * 10 ) ) - POSITION_Y_GRILLE ) / 10) ;
-        return x ;
+        return (pixel - POSITION_Y_GRILLE ) / ( ( ( POSITION_Y_GRILLE + ( TAILLE_CASE * 10 ) ) - POSITION_Y_GRILLE ) / 10);
     }
 
     public int getCaseY(int pixel) {
-        int y = (pixel - POSITION_X_GRILLE ) / ( ( ( POSITION_X_GRILLE + ( TAILLE_CASE * 10 ) ) - POSITION_X_GRILLE ) / 10) ;
-        return y ;
+        return (pixel - POSITION_X_GRILLE ) / ( ( ( POSITION_X_GRILLE + ( TAILLE_CASE * 10 ) ) - POSITION_X_GRILLE ) / 10);
     }
 }

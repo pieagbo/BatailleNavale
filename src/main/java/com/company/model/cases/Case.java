@@ -29,7 +29,7 @@ public class Case {
         }
     }
 
-    public String toString(boolean boatVisible) {
+    public String display(boolean boatVisible) {
         if (this.bateau != null) {
             if(this.bateau.isDetroy()){
                 return " X ";

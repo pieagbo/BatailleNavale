@@ -16,50 +16,33 @@ public class Joueur {
         this.name = "" ;
         this.bateaux = new ArrayList<>();
         this.bateaux.add(new Torpilleur());
-//        this.bateaux.add(new Croiseur());
-//        this.bateaux.add(new PorteAvion());
-//        this.bateaux.add(new SousMarin());
-//        this.bateaux.add(new ContreTorpilleur());
-
+        this.bateaux.add(new Croiseur());
+        this.bateaux.add(new PorteAvion());
+        this.bateaux.add(new SousMarin());
+        this.bateaux.add(new ContreTorpilleur());
     }
 
-    public  void positionnerUnBateau(Bateau bateau, Plateau plateau, String coordonnees){
+    public  void positionnerUnBateau(Bateau bateau, Plateau plateau, int[] coordonnees){
         int x, y, x1, y1 ;
 
-        String[] parts = coordonnees.split(";");
+        x = coordonnees[0];
+        y = coordonnees[1];
 
-        String parts1 = parts[0];
-        String parts2 = parts[1];
+        x1 = coordonnees[2];
+        y1 = coordonnees[3];
 
-        x = Integer.parseInt(parts1.substring(0,1));
-        y = Integer.parseInt(parts1.substring(1));
-
-        x1 = Integer.parseInt(parts2.substring(0,1));
-        y1 = Integer.parseInt(parts2.substring(1));
-
-        //CaseBateau CaseD = new CaseBateau(x,y);
         plateau.addBoat(x, y, bateau);
 
-        //bateau.getCoordonnes().add(CaseD);
-        //CaseBateau CaseArr = new CaseBateau(x1,y1);
-
-        //plateau.setCase(x1, y1, CaseArr);
         plateau.addBoat(x1, y1, bateau);
-        //bateau.getCoordonnes().add(CaseArr);
+
         if (x == x1) {
             while (y < (y1 - 1) ) {
                 y++;
-                //CaseBateau CaseMillieu = new CaseBateau(x, y);
-                //plateau.setCase(x, y, CaseMillieu);
                 plateau.addBoat(x, y, bateau);
-                //bateau.getCoordonnes().add(CaseMillieu);
             }
         } else if (y == y1) {
             while (x < (x1 - 1) ) {
                 x++;
-                //CaseBateau CaseMillieu = new CaseBateau(x,y);
-                //plateau.setCase(x, y, CaseMillieu);
-                //bateau.getCoordonnes().add(CaseMillieu);
                 plateau.addBoat(x, y, bateau);
             }
         }
@@ -72,14 +55,6 @@ public class Joueur {
             }
         }
         return true;
-    }
-
-
-    public Bateau getBateau(Case uneCase) {
-        if (uneCase.getBoat() != null) {
-            return uneCase.getBoat() ;
-        }
-        return null;
     }
 
     public ArrayList<Bateau> getBateaux() {

@@ -19,17 +19,12 @@ public class BatailleNavaleController {
         this.model = model ;
     }
 
-    public void shoot(Joueur joueur, int x, int y) {
-        this.model.shoot(joueur, x, y);
-    }
-
     public void shoot(Plateau grille, int x, int y) {
         if (canPlay && (x >= 0 && x < 10) && (y >= 0 && y < 10) && grille.getCase(x, y) != null && !grille.getCase(x, y).isTouch()){
             this.model.shoot(grille, x, y);
+
             canPlay = false ;
             this.view.enableSwapp();
-        } else {
-            //on fait rien et on le laisse jouer
         }
     }
 

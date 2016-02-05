@@ -29,57 +29,13 @@ public class BatailleNavaleModel extends Observable {
         }
     }
 
-    public boolean boatIsDestroy(Joueur player, int x, int y){
-        if(player.equals(this.player1)) {
-            if (this.grilleJ2.getCase(x,y).getBoat() != null) {
-                return player2.getBateau(this.grilleJ2.getCase(x, y)).isDetroy() ;
-            } else {
-                return false ;
-            }
-        } else {
-            if (this.grilleJ1.getCase(x,y).getBoat() != null) {
-                return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ;
-            } else {
-                return false ;
-            }
-        }
-    }
-
-    public boolean boatIsDestroy(Plateau grille, int x, int y){
-        if(grille.equals(this.grilleJ2)) {
-            if (this.grilleJ2.getCase(x,y).getBoat() != null) {
-                return player2.getBateau(this.grilleJ2.getCase(x, y)).isDetroy() ;
-            } else {
-                return false ;
-            }
-        } else {
-            if (this.grilleJ1.getCase(x,y).getBoat() != null) {
-                return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ;
-            } else {
-                return false ;
-            }
-        }
-    }
-
-    public void shoot(Joueur player, int x, int y){
-        if(player.equals(this.player1)) {
-            this.grilleJ2.getCase(x, y).setTouch(true);
-        } else {
-            this.grilleJ1.getCase(x, y).setTouch(true);
-        }
-
-        setChanged();
-        notifyObservers();
-    }
-
     public void shoot(Plateau grille, int x, int y){
         grille.getCase(x, y).setTouch(true);
-
         setChanged();
-        notifyObservers();
+        notifyObservers(getWinner());
     }
 
-    public Joueur getWinner() {
+    private  Joueur getWinner() {
         if (player1.hasLoose()){
             return player2;
         } else if(player2.hasLoose()){

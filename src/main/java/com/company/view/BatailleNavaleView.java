@@ -15,6 +15,8 @@ import java.util.Observer;
 import java.util.Random;
 import java.util.Scanner;
 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
 /**
  * Created by pieagbo on 01/02/16.
  */
@@ -37,8 +39,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
     PlayerBoard infoPlayer ;
 
     JButton swapp ;
-    JButton restart ;
-
 
     public BatailleNavaleView(BatailleNavaleModel model, BatailleNavaleController controller) {
         super();
@@ -68,7 +68,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
-        //this.currentPlayer = this.getRandomPlayer() ;
         this.currentPlayer = this.player1 ;
 
         this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
@@ -77,14 +76,7 @@ public class BatailleNavaleView extends JFrame implements Observer {
         JPanel buttonPanel = new JPanel() ;
         this.infoPlayer = new PlayerBoard(this.currentPlayer) ;
 
-        this.restart = new JButton("Recommencer");
-        this.swapp = new JButton("Changer de tour");
-
-        restart.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                restartSetThisActionPerformed(evt);
-            }
-        });
+        this.swapp = new JButton("Tour suivant");
 
         swapp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -92,7 +84,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
             }
         });
 
-        buttonPanel.add(restart);
         buttonPanel.add(swapp);
 
         this.swapp.setEnabled(false);
@@ -128,16 +119,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
         this.model = new BatailleNavaleModel() ;
     }
 
-    private Joueur getRandomPlayer() {
-        Random rand = new Random();
-
-        if(rand.nextInt(2) == 1) {
-            return  player1;
-        } else {
-            return player2;
-        }
-    }
-
     private void setJoueurName(Joueur player){
         System.out.print("Entrez votre nom : ");
 
@@ -165,7 +146,8 @@ public class BatailleNavaleView extends JFrame implements Observer {
             System.out.println("horizontale (h) ou verticale (v)") ;
             String sens = scan.nextLine() ;
 
-            String pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
+            int[] pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
+
             player.positionnerUnBateau(boat, grille, pos);
 
             grille.afficherPlateau(true);
@@ -174,7 +156,7 @@ public class BatailleNavaleView extends JFrame implements Observer {
         }
     }
 
-    private int[] getCoordonnees(String input){
+    int[] getCoordonnees(String input){
         int[] coordonnees = new int[2] ;
 
         coordonnees[0] = getIndexInAlphabet(input.substring(0,1).charAt(0)) ;
@@ -183,23 +165,27 @@ public class BatailleNavaleView extends JFrame implements Observer {
         return coordonnees;
     }
 
-    private int getIndexInAlphabet(char letter) {
+    int getIndexInAlphabet(char letter) {
         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(Character.toUpperCase(letter)) ;
     }
 
-    private int getNumber(String letter) {
+    int getNumber(String letter) {
         return Integer.parseInt(letter) - 1 ;
     }
 
-    private String convertToCustomString(int[] pos, String sens, int taille) {
-        String coordonnees = Integer.toString(pos[0]) + Integer.toString(pos[1]) + ";" ;
+    int[] convertToCustomString(int[] pos, String sens, int taille) {
+        int[] coordonnees = new int[4] ;
+        coordonnees[0] = pos[0] ;
+        coordonnees[1] = pos[1] ;
 
         if("v".equalsIgnoreCase(sens)){
             int x = pos[0] + (taille -1) ;
-            coordonnees += Integer.toString(x) + Integer.toString(pos[1]) ;
+            coordonnees[2] = x ;
+            coordonnees[3] = pos[1];
         } else if("h".equalsIgnoreCase(sens)) {
             int y = pos[1] + (taille -1) ;
-            coordonnees += Integer.toString(pos[0]) + Integer.toString(y) ;
+            coordonnees[3] = y ;
+            coordonnees[2] = pos[0];
         }
 
         return coordonnees ;
@@ -221,5 +207,13 @@ public class BatailleNavaleView extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         this.repaint();
+
+        if(arg != null) {
+            if (arg instanceof Joueur) {
+                JOptionPane.showMessageDialog(null, "Partie Finie ! Félicitations " + ((Joueur)arg).getName() + " vous avez gagné !");
+                setVisible(false);
+                dispose();
+            }
+        }
     }
 }

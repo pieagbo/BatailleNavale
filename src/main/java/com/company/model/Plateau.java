@@ -25,7 +25,7 @@ public class Plateau {
                 System.out.println("   A  B  C  D  E  F  G  H  I  J");
             System.out.print((i + 1) + " ");
             for (int j = 0; j < plateau.length ; j++) {
-                System.out.print(this.plateau[i][j].toString(boatVisible)) ;
+                System.out.print(this.plateau[i][j].display(boatVisible)) ;
             }
             System.out.println();
         }
@@ -33,10 +33,6 @@ public class Plateau {
 
     public Case getCase(int x, int y ){
         return this.plateau[x][y];
-    }
-
-    public void setCase(int x, int y ,Case uneCase){
-        this.plateau[x][y]=uneCase;
     }
 
     public void addBoat(int x, int y, Bateau boat) {
