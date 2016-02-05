@@ -1,12 +1,13 @@
 package com.company.model;
 
-import com.company.model.cases.CaseBateau;
 import com.company.model.joueurs.Joueur;
+
+import java.util.Observable;
 
 /**
  * Created by pieagbo on 01/02/16.
  */
-public class BatailleNavaleModel {
+public class BatailleNavaleModel extends Observable {
     Joueur player1 ;
     Joueur player2 ;
     Plateau grilleJ1 ;
@@ -28,18 +29,34 @@ public class BatailleNavaleModel {
         }
     }
 
-    public String boatIsDestroy(Joueur player, int x, int y){
+    public boolean boatIsDestroy(Joueur player, int x, int y){
         if(player.equals(this.player1)) {
-            if (this.grilleJ2.getCase(x,y) instanceof CaseBateau) {
-                return player2.getBateau(this.grilleJ2.getCase(x, y)).isDetroy() ? "DESTROY" : "TOUCH" ;
+            if (this.grilleJ2.getCase(x,y).getBoat() != null) {
+                return player2.getBateau(this.grilleJ2.getCase(x, y)).isDetroy() ;
             } else {
-                return "NO" ;
+                return false ;
             }
         } else {
-            if (this.grilleJ1.getCase(x,y) instanceof CaseBateau) {
-                return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ? "DESTROY" : "TOUCH" ;
+            if (this.grilleJ1.getCase(x,y).getBoat() != null) {
+                return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ;
             } else {
-                return "NO" ;
+                return false ;
+            }
+        }
+    }
+
+    public boolean boatIsDestroy(Plateau grille, int x, int y){
+        if(grille.equals(this.grilleJ2)) {
+            if (this.grilleJ2.getCase(x,y).getBoat() != null) {
+                return player2.getBateau(this.grilleJ2.getCase(x, y)).isDetroy() ;
+            } else {
+                return false ;
+            }
+        } else {
+            if (this.grilleJ1.getCase(x,y).getBoat() != null) {
+                return player1.getBateau(this.grilleJ1.getCase(x, y)).isDetroy() ;
+            } else {
+                return false ;
             }
         }
     }
@@ -50,6 +67,16 @@ public class BatailleNavaleModel {
         } else {
             this.grilleJ1.getCase(x, y).setTouch(true);
         }
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public void shoot(Plateau grille, int x, int y){
+        grille.getCase(x, y).setTouch(true);
+
+        setChanged();
+        notifyObservers();
     }
 
     public Joueur getWinner() {

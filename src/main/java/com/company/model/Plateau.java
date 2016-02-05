@@ -1,7 +1,7 @@
 package com.company.model;
 
+import com.company.model.bateaux.Bateau;
 import com.company.model.cases.Case;
-import com.company.model.cases.CaseMer;
 
 /**
  * Created by mlafourca002 on 01/02/16.
@@ -14,7 +14,7 @@ public class Plateau {
         this.plateau = new Case[10][10];
         for(int i=0;i<plateau.length;i++) {
             for(int j=0;j<plateau.length;j++) {
-                this.plateau[i][j] = new CaseMer(i,j);
+                this.plateau[i][j] = new Case(i,j);
             }
         }
     }
@@ -39,4 +39,11 @@ public class Plateau {
         this.plateau[x][y]=uneCase;
     }
 
+    public void addBoat(int x, int y, Bateau boat) {
+        this.plateau[x][y].addBoat(boat) ;
+    }
+
+    public Case[][] getPlateau() {
+        return plateau;
+    }
 }

@@ -3,7 +3,6 @@ package com.company.model.joueurs;
 import com.company.model.Plateau;
 import com.company.model.bateaux.*;
 import com.company.model.cases.Case;
-import com.company.model.cases.CaseBateau;
 
 import java.util.ArrayList;import java.util.Scanner;
 
@@ -38,27 +37,30 @@ public class Joueur {
         x1 = Integer.parseInt(parts2.substring(0,1));
         y1 = Integer.parseInt(parts2.substring(1));
 
-        CaseBateau CaseD = new CaseBateau(x,y);
-        plateau.setCase(x, y, CaseD);
+        //CaseBateau CaseD = new CaseBateau(x,y);
+        plateau.addBoat(x, y, bateau);
 
-        bateau.getCoordonnes().add(CaseD);
-        CaseBateau CaseArr = new CaseBateau(x1,y1);
+        //bateau.getCoordonnes().add(CaseD);
+        //CaseBateau CaseArr = new CaseBateau(x1,y1);
 
-        plateau.setCase(x1, y1, CaseArr);
-        bateau.getCoordonnes().add(CaseArr);
+        //plateau.setCase(x1, y1, CaseArr);
+        plateau.addBoat(x1, y1, bateau);
+        //bateau.getCoordonnes().add(CaseArr);
         if (x == x1) {
             while (y < (y1 - 1) ) {
                 y++;
-                CaseBateau CaseMillieu = new CaseBateau(x, y);
-                plateau.setCase(x, y, CaseMillieu);
-                bateau.getCoordonnes().add(CaseMillieu);
+                //CaseBateau CaseMillieu = new CaseBateau(x, y);
+                //plateau.setCase(x, y, CaseMillieu);
+                plateau.addBoat(x, y, bateau);
+                //bateau.getCoordonnes().add(CaseMillieu);
             }
         } else if (y == y1) {
             while (x < (x1 - 1) ) {
                 x++;
-                CaseBateau CaseMillieu = new CaseBateau(x,y);
-                plateau.setCase(x, y, CaseMillieu);
-                bateau.getCoordonnes().add(CaseMillieu);
+                //CaseBateau CaseMillieu = new CaseBateau(x,y);
+                //plateau.setCase(x, y, CaseMillieu);
+                //bateau.getCoordonnes().add(CaseMillieu);
+                plateau.addBoat(x, y, bateau);
             }
         }
     }
@@ -74,12 +76,8 @@ public class Joueur {
 
 
     public Bateau getBateau(Case uneCase) {
-        for (Bateau b : this.bateaux) {
-            for (Case c : b.getCoordonnes()){
-                if (c.getX() == uneCase.getX() && c.getY() == uneCase.getY()) {
-                    return b ;
-                }
-            }
+        if (uneCase.getBoat() != null) {
+            return uneCase.getBoat() ;
         }
         return null;
     }

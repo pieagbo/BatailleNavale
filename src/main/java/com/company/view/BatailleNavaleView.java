@@ -6,13 +6,19 @@ import com.company.model.Plateau;
 import com.company.model.bateaux.Bateau;
 import com.company.model.joueurs.Joueur;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 import java.util.Scanner;
 
 /**
  * Created by pieagbo on 01/02/16.
  */
-public class BatailleNavaleView {
+public class BatailleNavaleView extends JFrame implements Observer {
 
     BatailleNavaleModel model ;
     BatailleNavaleController controller ;
@@ -20,12 +26,25 @@ public class BatailleNavaleView {
     Joueur player1 ;
     Joueur player2 ;
 
+    GrilleGraphique grilleJ1 ;
+    GrilleGraphique grilleJ2 ;
+
+    GrilleGraphique currentGrilleGraphique ;
+
     Joueur currentPlayer ;
     Plateau currentPlateau ;
 
+    JButton swapp ;
+    JButton restart ;
+
     public BatailleNavaleView(BatailleNavaleModel model, BatailleNavaleController controller) {
+        super();
+        this.setName("Bataille Navale");
+
         this.model = model ;
         this.controller = controller ;
+
+        this.controller.addView(this) ;
 
         this.player1 = this.model.getPlayer1() ;
         this.player2 = this.model.getPlayer2() ;
@@ -36,44 +55,68 @@ public class BatailleNavaleView {
         this.setJoueurName(player2);
         this.setJoueurBoats(player2, this.model.getPlateau(player1));
 
-        this.currentPlayer = this.getRandomPlayer() ;
+        this.grilleJ1 = new GrilleGraphique(this.model.getPlateau(player2), this.controller);
+        this.grilleJ2 = new GrilleGraphique(this.model.getPlateau(player1), this.controller);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.getContentPane().setPreferredSize(new Dimension(700, 650));
+        this.pack();
+
+        this.setResizable(true);
+        this.setLocationRelativeTo(null);
+
+        //this.currentPlayer = this.getRandomPlayer() ;
+        this.currentPlayer = this.player1 ;
+
         this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
+        this.currentGrilleGraphique = this.grilleJ2 ;
+
+        JPanel buttonPanel = new JPanel() ;
+
+        this.restart = new JButton("Recommencer");
+        this.swapp = new JButton("Changer de tour");
+
+        restart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                restartSetThisActionPerformed(evt);
+            }
+        });
+
+        swapp.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                swappThisActionPerformed(evt);
+            }
+        });
+
+        buttonPanel.add(restart);
+        buttonPanel.add(swapp);
+
+        this.add(this.currentGrilleGraphique, BorderLayout.CENTER) ;
+        this.add(buttonPanel, BorderLayout.NORTH) ;
+
+        this.model.addObserver(this);
     }
 
-    public void drawGame() {
-        System.out.println(this.currentPlayer.getName() + " c'est à votre tour de jouer.");
-        this.currentPlateau.afficherPlateau(false);
-        System.out.println();
-    }
-
-    public void jouer(){
-        Joueur winner = null ;
-        while(winner == null){
-            drawGame();
-
-            int[] position = askWhereShoot() ;
-            int x =  position[0] ;
-            int y =  position[1] ;
-
-            this.controller.shoot(this.currentPlayer, x, y);
-
-            drawGame();
-
-            this.displayBoatDestroy(this.currentPlayer, x, y);
-
-            swapJoueur() ;
-
-            winner = this.model.getWinner() ;
+    private void swappThisActionPerformed(ActionEvent evt) {
+        if(this.currentPlayer.equals(player1)) {
+            this.currentPlayer = player2;
+            this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
+            this.currentGrilleGraphique.setGrille(this.currentPlateau);
+            this.repaint();
+            this.controller.nowCanPlay();
+        } else {
+            this.currentPlayer = player1;
+            this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
+            this.currentGrilleGraphique.setGrille(this.currentPlateau);
+            this.repaint();
+            this.controller.nowCanPlay();
         }
 
-        displayWinner(winner);
+        this.swapp.setEnabled(false);
     }
 
-    private int[] askWhereShoot() {
-        System.out.println("Entrez les coordonnées de la case à cibler (ex: C2) : ");
-        Scanner scan = new Scanner(System.in);
-
-        return getCoordonnees(scan.nextLine()) ;
+    private void restartSetThisActionPerformed(ActionEvent evt) {
+        this.model = new BatailleNavaleModel() ;
     }
 
     private Joueur getRandomPlayer() {
@@ -84,37 +127,6 @@ public class BatailleNavaleView {
         } else {
             return player2;
         }
-    }
-
-    private void swapJoueur() {
-        if(this.currentPlayer.equals(player1)) {
-            this.currentPlayer = player2;
-            this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
-        } else {
-            this.currentPlayer = player1;
-            this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
-        }
-    }
-
-    private void displayWinner(Joueur winner) {
-        System.out.println("Félicitation " + winner.getName() + " vous êtes le vainqueur !");
-    }
-
-    private void displayBoatDestroy(Joueur player, int x, int y){
-        switch (this.controller.boatIsDestroy(player, x, y)) {
-            case "DESTROY":
-                System.out.println("Vous avez détruit un bateau !");
-                break;
-            case "TOUCH":
-                System.out.println("Vous avez touché un bateau !");
-                break;
-            case "NO":
-                System.out.println("Vous n'avez rien touché !");
-                break;
-            default:
-                System.out.println("Erreur");
-        }
-        System.out.println();
     }
 
     private void setJoueurName(Joueur player){
@@ -183,5 +195,23 @@ public class BatailleNavaleView {
         }
 
         return coordonnees ;
+    }
+
+    public void enableSwapp(){
+        this.swapp.setEnabled(true);
+    }
+
+    /**
+     * This method is called whenever the observed object is changed. An
+     * application calls an <tt>Observable</tt> object's
+     * <code>notifyObservers</code> method to have all the object's
+     * observers notified of the change.
+     *
+     * @param o   the observable object.
+     * @param arg an argument passed to the <code>notifyObservers</code>
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        this.repaint();
     }
 }

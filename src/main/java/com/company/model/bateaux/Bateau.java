@@ -3,6 +3,7 @@ package com.company.model.bateaux;
 import com.company.model.cases.Case;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  * Created by loua001 on 01/02/16.
@@ -10,12 +11,11 @@ import java.util.ArrayList;
 public abstract  class Bateau {
     String nom;
     int taille;
-    ArrayList<Case> coordonnes;
+    protected boolean touch ;
 
     public Bateau(String nom, int taille) {
         this.nom = nom ;
         this.taille = taille ;
-        this.coordonnes = new ArrayList<>(taille) ;
     }
 
     public int getTaille() {
@@ -26,17 +26,17 @@ public abstract  class Bateau {
         return nom;
     }
 
-    public ArrayList<Case> getCoordonnes() {
-        return coordonnes;
+    public boolean isTouch(){
+        return this.touch ;
+    }
+
+    public void setTouch(boolean touch) {
+        this.touch = touch;
+        taille-- ;
     }
 
     public boolean isDetroy() {
-        for (Case c : this.coordonnes){
-            if(!c.isTouch()){
-                return false ;
-            }
-        }
-        return true;
+        return taille == 0 ;
     }
 
 }
