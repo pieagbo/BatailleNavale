@@ -93,4 +93,13 @@ public class Joueur {
     public String getName() {
         return name;
     }
+
+    public int getBateauxInLife() {
+        int i = 0 ;
+        for (Bateau boat : this.getBateaux()) {
+            if (!boat.isDetroy())
+                i++ ;
+        }
+        return i ;
+    }
 }

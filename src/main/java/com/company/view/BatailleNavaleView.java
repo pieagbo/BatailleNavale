@@ -34,8 +34,11 @@ public class BatailleNavaleView extends JFrame implements Observer {
     Joueur currentPlayer ;
     Plateau currentPlateau ;
 
+    PlayerBoard infoPlayer ;
+
     JButton swapp ;
     JButton restart ;
+
 
     public BatailleNavaleView(BatailleNavaleModel model, BatailleNavaleController controller) {
         super();
@@ -59,10 +62,10 @@ public class BatailleNavaleView extends JFrame implements Observer {
         this.grilleJ2 = new GrilleGraphique(this.model.getPlateau(player1), this.controller);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.getContentPane().setPreferredSize(new Dimension(700, 650));
+        this.getContentPane().setPreferredSize(new Dimension(800, 650));
         this.pack();
 
-        this.setResizable(true);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
 
         //this.currentPlayer = this.getRandomPlayer() ;
@@ -72,6 +75,7 @@ public class BatailleNavaleView extends JFrame implements Observer {
         this.currentGrilleGraphique = this.grilleJ2 ;
 
         JPanel buttonPanel = new JPanel() ;
+        this.infoPlayer = new PlayerBoard(this.currentPlayer) ;
 
         this.restart = new JButton("Recommencer");
         this.swapp = new JButton("Changer de tour");
@@ -91,8 +95,11 @@ public class BatailleNavaleView extends JFrame implements Observer {
         buttonPanel.add(restart);
         buttonPanel.add(swapp);
 
+        this.swapp.setEnabled(false);
+
         this.add(this.currentGrilleGraphique, BorderLayout.CENTER) ;
         this.add(buttonPanel, BorderLayout.NORTH) ;
+        this.add(this.infoPlayer, BorderLayout.EAST) ;
 
         this.model.addObserver(this);
     }
@@ -102,12 +109,14 @@ public class BatailleNavaleView extends JFrame implements Observer {
             this.currentPlayer = player2;
             this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
             this.currentGrilleGraphique.setGrille(this.currentPlateau);
+            this.infoPlayer.setPlayer(this.currentPlayer) ;
             this.repaint();
             this.controller.nowCanPlay();
         } else {
             this.currentPlayer = player1;
             this.currentPlateau = this.model.getPlateau(this.currentPlayer) ;
             this.currentGrilleGraphique.setGrille(this.currentPlateau);
+            this.infoPlayer.setPlayer(this.currentPlayer) ;
             this.repaint();
             this.controller.nowCanPlay();
         }
@@ -157,7 +166,6 @@ public class BatailleNavaleView extends JFrame implements Observer {
             String sens = scan.nextLine() ;
 
             String pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
-            System.out.println(pos);
             player.positionnerUnBateau(boat, grille, pos);
 
             grille.afficherPlateau(true);
