@@ -49,7 +49,7 @@ public class JoueurTest {
         Bateau bateau= new Croiseur();
         joueur.bateaux.add(bateau);
 
-        Case uneCase = new CaseBateau(0,0);
+        //Case uneCase = new CaseBateau(0,0);
 
         joueur.positionnerUnBateau(bateau, plat, "00;02");
 
