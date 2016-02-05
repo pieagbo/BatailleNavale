@@ -24,7 +24,6 @@ public class Joueur {
 
         if(BatailleNavaleModel._mode) // Mode --> Développeur
         {
-            System.out.println(BatailleNavaleModel._mode);
             this.bateaux.add(new Torpilleur());
         }
         else
