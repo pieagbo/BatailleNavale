@@ -144,8 +144,8 @@ public class BatailleNavaleView {
             System.out.println("horizontale (h) ou verticale (v)") ;
             String sens = scan.nextLine() ;
 
-            String pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
-            System.out.println(pos);
+            int[] pos = convertToCustomString(getCoordonnees(position), sens, boat.getTaille()) ;
+
             player.positionnerUnBateau(boat, grille, pos);
 
             grille.afficherPlateau(true);
@@ -171,15 +171,22 @@ public class BatailleNavaleView {
         return Integer.parseInt(letter) - 1 ;
     }
 
-    private String convertToCustomString(int[] pos, String sens, int taille) {
-        String coordonnees = Integer.toString(pos[0]) + Integer.toString(pos[1]) + ";" ;
+    private int[] convertToCustomString(int[] pos, String sens, int taille) {
+        int[] coordonnees = new int[4] ;
+        coordonnees[0] = pos[0] ;
+        coordonnees[1] = pos[1] ;
+//        String coordonnees = Integer.toString(pos[0]) + Integer.toString(pos[1]) + ";" ;
 
         if("v".equalsIgnoreCase(sens)){
             int x = pos[0] + (taille -1) ;
-            coordonnees += Integer.toString(x) + Integer.toString(pos[1]) ;
+            coordonnees[2] = x ;
+            coordonnees[3] = pos[1];
+//            coordonnees += Integer.toString(x) + Integer.toString(pos[1]) ;
         } else if("h".equalsIgnoreCase(sens)) {
             int y = pos[1] + (taille -1) ;
-            coordonnees += Integer.toString(pos[0]) + Integer.toString(y) ;
+            coordonnees[3] = y ;
+            coordonnees[2] = pos[0];
+//            coordonnees += Integer.toString(pos[0]) + Integer.toString(y) ;
         }
 
         return coordonnees ;

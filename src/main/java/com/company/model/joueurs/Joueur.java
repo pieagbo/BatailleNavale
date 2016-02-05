@@ -24,19 +24,15 @@ public class Joueur {
 
     }
 
-    public  void positionnerUnBateau(Bateau bateau, Plateau plateau, String coordonnees){
+    public  void positionnerUnBateau(Bateau bateau, Plateau plateau, int[] coordonnees){
         int x, y, x1, y1 ;
 
-        String[] parts = coordonnees.split(";");
 
-        String parts1 = parts[0];
-        String parts2 = parts[1];
+        x = coordonnees[0];
+        y = coordonnees[1];
 
-        x = Integer.parseInt(parts1.substring(0,1));
-        y = Integer.parseInt(parts1.substring(1));
-
-        x1 = Integer.parseInt(parts2.substring(0,1));
-        y1 = Integer.parseInt(parts2.substring(1));
+        x1 = coordonnees[2];
+        y1 = coordonnees[3];
 
         CaseBateau CaseD = new CaseBateau(x,y);
         plateau.setCase(x, y, CaseD);
